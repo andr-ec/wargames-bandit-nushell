@@ -3,7 +3,7 @@
   "sessionId": "9c5f09e4-1f11-47da-9c3a-b1b182b661a9",
   "status": "running",
   "startedAt": "2026-01-28T19:15:32.185Z",
-  "updatedAt": "2026-01-28T19:15:43.254Z",
+  "updatedAt": "2026-01-28T19:25:14.604Z",
   "currentIteration": 0,
   "maxIterations": 0,
   "tasksCompleted": 0,
@@ -103,8 +103,6 @@
   "iterations": [],
   "skippedTaskIds": [],
   "cwd": "/home/andre/Documents/scratch/bandit-wargame",
-  "activeTaskIds": [
-    "bandit-wargame-jvj.1"
-  ],
+  "activeTaskIds": [],
   "subagentPanelVisible": false
 }

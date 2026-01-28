@@ -11,7 +11,7 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
         nushell = pkgs.nushell;
-      in rec {
+      in {
         devShells.default = pkgs.mkShell {
           buildInputs = [
             nushell
@@ -54,31 +54,6 @@
           '';
 
           dontFixup = true;
-        };
-
-        packages.docker = pkgs.dockerTools.buildImage {
-          name = "bandit-nushell";
-          tag = "latest";
-
-          contents = [
-            pkgs.nushell
-            pkgs.openssh
-            pkgs.git
-            pkgs.netcat
-            pkgs.coreutils
-            pkgs.findutils
-            pkgs.gzip
-            pkgs.bzip2
-            pkgs.bash
-            pkgs.sudo
-          ];
-
-          runAsRoot = true;
-          config = {
-            Cmd = ["/bin/bash"];
-            ExposedPorts = { "2222/tcp" = {}; };
-            Env = [ "BANDIT_PORT=2222" ];
-          };
         };
 
         checks.test-levels = pkgs.writeShellScriptBin "test-levels" ''
