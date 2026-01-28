@@ -11,7 +11,7 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
         nushell = pkgs.nushell;
-      in {
+      in rec {
         devShells.default = pkgs.mkShell {
           buildInputs = [
             nushell
@@ -69,7 +69,6 @@
             pkgs.findutils
             pkgs.gzip
             pkgs.bzip2
-            pkgs.tar
             pkgs.bash
             pkgs.sudo
           ];
@@ -82,25 +81,23 @@
           };
         };
 
-        checks = {
-          test-levels = pkgs.writeShellScriptBin "test-levels" ''
-            echo "Running level tests..."
-            nushell --test
-            echo "Tests complete"
-          '';
-        };
-
-        apps.default = flake-utils.lib.mkApp {
-          drv = pkgs.writeShellScriptBin "play-bandit" ''
-            nushell
-          '';
-        };
+        checks.test-levels = pkgs.writeShellScriptBin "test-levels" ''
+          echo "Running level tests..."
+          nushell --test
+          echo "Tests complete"
+        '';
 
         apps.test-levels = flake-utils.lib.mkApp {
           drv = pkgs.writeShellScriptBin "test-levels" ''
             echo "Running all level tests..."
             nushell --test
             echo "Test complete"
+          '';
+        };
+
+        apps.default = flake-utils.lib.mkApp {
+          drv = pkgs.writeShellScriptBin "play-bandit" ''
+            nushell
           '';
         };
       }

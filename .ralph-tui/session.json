@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "sessionId": "9c5f09e4-1f11-47da-9c3a-b1b182b661a9",
+  "status": "running",
+  "startedAt": "2026-01-28T19:15:32.185Z",
+  "updatedAt": "2026-01-28T19:15:43.254Z",
+  "currentIteration": 0,
+  "maxIterations": 0,
+  "tasksCompleted": 0,
+  "isPaused": false,
+  "agentPlugin": "opencode",
+  "trackerState": {
+    "plugin": "beads",
+    "epicId": "bandit-wargame-jvj",
+    "totalTasks": 14,
+    "tasks": [
+      {
+        "id": "bandit-wargame-jvj.2",
+        "title": "US-002: Create level directory structure and shared libraries",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "bandit-wargame-jvj.1",
+        "title": "US-001: Create Nix flake with shell and Docker outputs",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "bandit-wargame-jvj.13",
+        "title": "US-013: Create test harness for level verification",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "bandit-wargame-jvj.12",
+        "title": "US-012: Implement levels 32-39 (Advanced challenges)",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "bandit-wargame-jvj.11",
+        "title": "US-011: Implement levels 27-31 (Git challenges)",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "bandit-wargame-jvj.10",
+        "title": "US-010: Implement levels 25-26 (SSH and shell escapes)",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "bandit-wargame-jvj.9",
+        "title": "US-009: Implement levels 21-24 (Cron and scheduled tasks)",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "bandit-wargame-jvj.8",
+        "title": "US-008: Implement levels 17-20 (Diff and privilege escalation)",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "bandit-wargame-jvj.7",
+        "title": "US-007: Implement levels 13-16 (SSH and networking)",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "bandit-wargame-jvj.6",
+        "title": "US-006: Implement levels 10-12 (Encoding and compression)",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "bandit-wargame-jvj.5",
+        "title": "US-005: Implement levels 7-9 (Text search and processing)",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "bandit-wargame-jvj.4",
+        "title": "US-004: Implement levels 4-6 (File finding with filters)",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "bandit-wargame-jvj.3",
+        "title": "US-003: Implement levels 0-3 (Basic file operations)",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "bandit-wargame-jvj.14",
+        "title": "US-014: Write player documentation",
+        "status": "open",
+        "completedInSession": false
+      }
+    ]
+  },
+  "iterations": [],
+  "skippedTaskIds": [],
+  "cwd": "/home/andre/Documents/scratch/bandit-wargame",
+  "activeTaskIds": [
+    "bandit-wargame-jvj.1"
+  ],
+  "subagentPanelVisible": false
+}
