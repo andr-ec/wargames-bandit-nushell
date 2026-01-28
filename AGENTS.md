@@ -28,6 +28,11 @@ When you learn something important while working on this project, update this se
 
 <!-- Add learnings here as: - [Topic]: Brief insight (see docs/LEARNINGS.md#topic) -->
 
+- [Nushell module system]: When calling functions from imported modules with subcommands (e.g., `main setup`), you must use module prefix like `setup main setup` not just `main setup`
+- [path exists]: Nushell's `path exists` command takes piped input, not positional arguments - use `$file | path exists` instead of `path exists $file`
+- [mkdir]: Nushell's `mkdir` automatically creates parent directories, no `-p` flag needed
+- [Regex in where]: When using regex with `where` command on filenames, the `name` field includes full path prefix like `inhere/...`
+
 ## Landing the Plane (Session Completion)
 
 **When ending a work session**, you MUST complete ALL steps below. Work is NOT complete until `git push` succeeds.
