@@ -3,10 +3,10 @@
   "sessionId": "b86bccdd-3610-4c26-aa88-b18d1eb36e10",
   "status": "running",
   "startedAt": "2026-01-28T20:31:58.853Z",
-  "updatedAt": "2026-01-28T20:39:52.130Z",
-  "currentIteration": 0,
+  "updatedAt": "2026-01-28T21:04:13.649Z",
+  "currentIteration": 1,
   "maxIterations": 0,
-  "tasksCompleted": 0,
+  "tasksCompleted": 1,
   "isPaused": false,
   "agentPlugin": "opencode",
   "trackerState": {
@@ -83,8 +83,8 @@
       {
         "id": "bandit-wargame-jvj.4",
         "title": "US-004: Implement levels 4-6 (File finding with filters)",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "bandit-wargame-jvj.3",
@@ -100,7 +100,18 @@
       }
     ]
   },
-  "iterations": [],
+  "iterations": [
+    {
+      "iteration": 1,
+      "status": "completed",
+      "taskId": "bandit-wargame-jvj.4",
+      "taskTitle": "US-004: Implement levels 4-6 (File finding with filters)",
+      "taskCompleted": true,
+      "durationMs": 469876,
+      "startedAt": "2026-01-28T20:32:02.077Z",
+      "endedAt": "2026-01-28T20:39:51.953Z"
+    }
+  ],
   "skippedTaskIds": [],
   "cwd": "/home/andre/Documents/scratch/bandit-wargame",
   "activeTaskIds": [],
