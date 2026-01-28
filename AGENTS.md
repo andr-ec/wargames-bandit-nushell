@@ -32,6 +32,8 @@ When you learn something important while working on this project, update this se
 - [path exists]: Nushell's `path exists` command takes piped input, not positional arguments - use `$file | path exists` instead of `path exists $file`
 - [mkdir]: Nushell's `mkdir` automatically creates parent directories, no `-p` flag needed
 - [Regex in where]: When using regex with `where` command on filenames, the `name` field includes full path prefix like `inhere/...`
+- [Group-by for counting]: Use `group-by` followed by `transpose` and `sort-by` to count occurrences of lines or elements
+- [Binary data handling]: When working with binary files, use `open` and `str find` with regex to extract human-readable strings
 
 ## Landing the Plane (Session Completion)
 

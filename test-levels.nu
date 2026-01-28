@@ -1,5 +1,5 @@
 #!/usr/bin/env nushell
-# Test runner for levels 0-3
+# Test runner for levels 0-9
 # Simple test runner that doesn't use dynamic imports
 
 use lib/check.nu
@@ -86,6 +86,42 @@ if $result6.success {
     print "✓ Level 6 PASS"
 } else {
     print $"✗ Level 6 FAIL: ($result6.message)"
+}
+
+# Test level 7
+print "Testing level 7..."
+use levels/07/setup.nu
+setup main setup | ignore
+use levels/07/check.nu
+let result7 = (check main check "9JkI8LZJPUprjaHEQKKnN1LLYtCLKCid")
+if $result7.success {
+    print "✓ Level 7 PASS"
+} else {
+    print $"✗ Level 7 FAIL: ($result7.message)"
+}
+
+# Test level 8
+print "Testing level 8..."
+use levels/08/setup.nu
+setup main setup | ignore
+use levels/08/check.nu
+let result8 = (check main check "CjsICidai6JgErcK92M9IGh3qzjJVGjB")
+if $result8.success {
+    print "✓ Level 8 PASS"
+} else {
+    print $"✗ Level 8 FAIL: ($result8.message)"
+}
+
+# Test level 9
+print "Testing level 9..."
+use levels/09/setup.nu
+setup main setup | ignore
+use levels/09/check.nu
+let result9 = (check main check "813VXyMr4N5uP1W30wddJy1OknNg30AQ")
+if $result9.success {
+    print "✓ Level 9 PASS"
+} else {
+    print $"✗ Level 9 FAIL: ($result9.message)"
 }
 
 print ""
