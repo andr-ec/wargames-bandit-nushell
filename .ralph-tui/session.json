@@ -3,10 +3,10 @@
   "sessionId": "9c5f09e4-1f11-47da-9c3a-b1b182b661a9",
   "status": "running",
   "startedAt": "2026-01-28T19:15:32.185Z",
-  "updatedAt": "2026-01-28T19:25:14.604Z",
-  "currentIteration": 0,
+  "updatedAt": "2026-01-28T19:25:16.095Z",
+  "currentIteration": 1,
   "maxIterations": 0,
-  "tasksCompleted": 0,
+  "tasksCompleted": 1,
   "isPaused": false,
   "agentPlugin": "opencode",
   "trackerState": {
@@ -23,8 +23,8 @@
       {
         "id": "bandit-wargame-jvj.1",
         "title": "US-001: Create Nix flake with shell and Docker outputs",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "bandit-wargame-jvj.13",
@@ -100,9 +100,22 @@
       }
     ]
   },
-  "iterations": [],
+  "iterations": [
+    {
+      "iteration": 1,
+      "status": "completed",
+      "taskId": "bandit-wargame-jvj.1",
+      "taskTitle": "US-001: Create Nix flake with shell and Docker outputs",
+      "taskCompleted": true,
+      "durationMs": 571340,
+      "startedAt": "2026-01-28T19:15:43.094Z",
+      "endedAt": "2026-01-28T19:25:14.434Z"
+    }
+  ],
   "skippedTaskIds": [],
   "cwd": "/home/andre/Documents/scratch/bandit-wargame",
-  "activeTaskIds": [],
+  "activeTaskIds": [
+    "bandit-wargame-jvj.2"
+  ],
   "subagentPanelVisible": false
 }

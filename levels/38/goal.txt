@@ -1,0 +1,1 @@
+This is the goal for level 38: Escape from the python shell.

@@ -1,0 +1,1 @@
+This is the goal for level 35: Use the SUID base64 binary to read the password file.

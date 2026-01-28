@@ -2,13 +2,13 @@
   "id": "9c5f09e4-1f11-47da-9c3a-b1b182b661a9",
   "status": "running",
   "startedAt": "2026-01-28T19:15:31.116Z",
-  "updatedAt": "2026-01-28T19:15:31.116Z",
+  "updatedAt": "2026-01-28T19:25:14.776Z",
   "agentPlugin": "opencode",
   "trackerPlugin": "beads",
   "epicId": "bandit-wargame-jvj",
-  "currentIteration": 0,
+  "currentIteration": 1,
   "maxIterations": 0,
   "totalTasks": 0,
-  "tasksCompleted": 0,
+  "tasksCompleted": 1,
   "cwd": "/home/andre/Documents/scratch/bandit-wargame"
 }

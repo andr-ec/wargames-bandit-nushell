@@ -56,24 +56,28 @@
           dontFixup = true;
         };
 
-        checks.test-levels = pkgs.writeShellScriptBin "test-levels" ''
-          echo "Running level tests..."
-          nushell --test
-          echo "Tests complete"
-        '';
-
-        apps.test-levels = flake-utils.lib.mkApp {
-          drv = pkgs.writeShellScriptBin "test-levels" ''
-            echo "Running all level tests..."
+        checks = {
+          test-levels = pkgs.writeShellScriptBin "test-levels" ''
+            echo "Running level tests..."
             nushell --test
-            echo "Test complete"
+            echo "Tests complete"
           '';
         };
 
-        apps.default = flake-utils.lib.mkApp {
-          drv = pkgs.writeShellScriptBin "play-bandit" ''
-            nushell
-          '';
+        apps = {
+          default = flake-utils.lib.mkApp {
+            drv = pkgs.writeShellScriptBin "play-bandit" ''
+              nushell
+            '';
+          };
+
+          test-levels = flake-utils.lib.mkApp {
+            drv = pkgs.writeShellScriptBin "test-levels" ''
+              echo "Running all level tests..."
+              nushell --test
+              echo "Test complete"
+            '';
+          };
         };
       }
     );

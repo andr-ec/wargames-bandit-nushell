@@ -10,6 +10,7 @@ Port the OverTheWire Bandit wargame to **Nushell** using **Nix** for reproducibl
 - `install.sh` - Original setup logic for each level (lines 124-668)
 - `scripts/` - Python listeners and C sources for special levels
 - `tasks/prd-nushell-bandit.md` - Full PRD with user stories
+- `/home/andre/nixos-config` - a full (complex) nixos config (might be over the top, but has good examples)
 
 ## Key Constraints
 

@@ -1,34 +1,35 @@
-export def create-user [
+export def "main create user" [
     username: string,
     password: string,
-    home_dir: string = "/home/bandit",
-    shell: string = "/bin/bash"
+    home_dir: string,
+    shell: string,
+    sudo: bool = false
 ] {
-    let home_path = $"($home_dir)/($username)"
+    # Create user
+    sudo useradd --create-home --shell $shell --home-dir $home_dir $username
 
-    echo $"Creating user: ($username)"
-    useradd -m -s ($shell) ($username)
-    echo $"Updating password for: ($username)"
-    echo ($password) | chpasswd -u ($username)
-    echo $"Home directory: ($home_path)"
-    echo $"User created successfully"
+    # Set password
+    echo $password | sudo chpasswd --stdin $username
+
+    if $sudo {
+        sudo usermod -aG sudo $username
+    }
+
+    # Create password file with correct permissions
+    $home_dir | path join "bandit_pass" | sudo mkdir -p
+    echo $password | sudo tee -a ($home_dir | path join "bandit_pass" | path join $username) > /dev/null
+    sudo chown $username:bandit ($home_dir | path join "bandit_pass" | path join $username)
+    sudo chmod 640 ($home_dir | path join "bandit_pass" | path join $username)
 }
 
-export def create-group [group_name: string] {
-    echo $"Creating group: ($group_name)"
-    groupadd ($group_name)
-}
-
-export def set-permissions [
-    file_path: string,
+export def "main set perms" [
+    file: string,
     owner: string,
     group: string,
-    mode: string = "640"
+    mode: string
 ] {
-    echo $"Setting permissions for: ($file_path)"
-    chmod ($mode) ($file_path)
-    chown ($owner):($group) ($file_path)
-    echo $"Permissions set: mode=($mode), owner=($owner), group=($group)"
+    sudo chown $owner:$group $file
+    sudo chmod $mode $file
 }
 
 export def create-readme [

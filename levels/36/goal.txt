@@ -1,0 +1,1 @@
+This is the goal for level 36: Use the SUID find binary to locate the password file.

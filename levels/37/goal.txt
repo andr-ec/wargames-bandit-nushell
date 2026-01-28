@@ -1,0 +1,1 @@
+This is the goal for level 37: Use the SUID cp binary to copy the password file.
