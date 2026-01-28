@@ -5,24 +5,24 @@ level: 0
 ---
 Level Goal
 ----------
-The goal of this level is for you to log into the game using SSH.
-The host to which you need to connect is
-**bandit.labs.overthewire.org**, on port 2220.
-The username is **bandit0** and the password is **bandit0**. Once
-logged in, go to the [Level 1][] page to find out how to beat Level
-1.
+The password for the next level is stored in a file called **readme**
+located in the home directory. Use this password to log into bandit1
+using SSH. Whenever you find a password for a level, use SSH (on port
+2220) to log into that level and continue the game.
 
 Commands you may need to solve this level
 -----------------------------------------
-[ssh](https://manpages.ubuntu.com/manpages/noble/man1/ssh.1.html)
+[ls](https://manpages.ubuntu.com/manpages/noble/man1/ls.1.html),
+[cd](https://manpages.ubuntu.com/manpages/noble/man1/cd.1posix.html),
+[cat](https://manpages.ubuntu.com/manpages/noble/man1/cat.1.html),
+[file](https://manpages.ubuntu.com/manpages/noble/man1/file.1.html),
+[du](https://manpages.ubuntu.com/manpages/noble/man1/du.1.html),
+[find](https://manpages.ubuntu.com/manpages/noble/man1/find.1.html)
 
-Helpful Reading Material
-------------------------
-- [Secure Shell (SSH) on Wikipedia][]
-- [How to use SSH with a non-standard port on It's FOSS][]
-- [How to use SSH with ssh-keys on wikiHow][]
+**TIP:** Create a file for notes and passwords on your local machine!
 
-[Level 1]: /wargames/bandit/bandit1.html
-[Secure Shell (SSH) on Wikipedia]: https://en.wikipedia.org/wiki/Secure_Shell
-[How to use SSH with a non-standard port on It's FOSS]: https://itsfoss.com/ssh-to-port/
-[How to use SSH with ssh-keys on wikiHow]: https://www.wikihow.com/Use-SSH
+Passwords for levels are *not* saved automatically.
+If you do not save them yourself, you will need to start over from bandit0.
+
+Passwords also occasionally change. It is recommended to take notes on how to solve each challenge.
+As levels get more challenging, detailed notes are useful to return to where you left off, reference for later problems, or help others after you've completed the challenge.

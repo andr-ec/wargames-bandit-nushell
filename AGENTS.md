@@ -18,8 +18,11 @@ Port the OverTheWire Bandit wargame to **Nushell** using **Nix** for reproducibl
 - Nix flake outputs: `devShells.default`, `packages.docker`
 - Each level needs: `goal.txt`, `setup.nu`, `check.nu`
 - Target nushell 0.100+
-
+- each level needs a test
+- all tests should follow the same structure
 ## Learnings
+
+ALWAYS UPDATE AGENTS.md AND LEARNINGS.md!!!!
 
 When you learn something important while working on this project, update this section with a concise one-liner and add details to `docs/LEARNINGS.md`.
 

@@ -57,25 +57,27 @@
         };
 
         checks = {
-          test-levels = pkgs.writeShellScriptBin "test-levels" ''
+          test-levels = pkgs.runCommand "test-levels" { buildInputs = [ nushell ]; } ''
+            mkdir -p $out/bin
+            cat > $out/bin/test-levels <<EOF
+            #!/bin/sh
             echo "Running level tests..."
-            nushell --test
-            echo "Tests complete"
+            ${nushell}/bin/nushell test-runner.nu
+            EOF
+            chmod +x $out/bin/test-levels
           '';
         };
 
         apps = {
           default = flake-utils.lib.mkApp {
             drv = pkgs.writeShellScriptBin "play-bandit" ''
-              nushell
+              exec ${nushell}/bin/nushell
             '';
           };
 
           test-levels = flake-utils.lib.mkApp {
             drv = pkgs.writeShellScriptBin "test-levels" ''
-              echo "Running all level tests..."
-              nushell --test
-              echo "Test complete"
+              exec ${nushell}/bin/nushell test-runner.nu
             '';
           };
         };

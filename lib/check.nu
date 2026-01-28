@@ -13,7 +13,8 @@ export def "main check password" [
 export def "main check file exists" [
     file: string
 ] -> record {
-    if path exists $file {
+    let exists = ($file | path exists)
+    if $exists {
         return { success: true, message: "File exists." }
     } else {
         return { success: false, message: "File does not exist." }

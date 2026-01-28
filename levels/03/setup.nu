@@ -1,27 +1,18 @@
-# Level 3 Setup
-# Create inhere directory with hidden file ...Hiding-From-You
-export def run-setup [] {
-    use lib/game.nu
+# Setup script for level 3
+# Create hidden file in inhere/ directory
 
-    # Set password for bandit3
-    let bandit3_password = (generate-password-random)
-
-    # Create bandit3 user
-    create-user "bandit3" $bandit3_password
-
-    # Create inhere directory
-    create-folder (path expand ~)/bandit3/inhere
-
-    # Create hidden file named ...Hiding-From-You
-    # Note: this creates a file with a name that starts with ...
-    create-hidden-file (path expand ~)/bandit3/inhere/.Hiding-From-You $bandit3_password
-
-    echo $"Password for bandit3: ($bandit3_password)"
-    return $bandit3_password
-}
-
-export def run-check [input: string] {
-    # Read password from the hidden file
-    let password = open (path expand ~)/bandit3/inhere/.Hiding-From-You | str trim
-    validate-password $input $password
+export def "main setup" [] {
+    let password = "bandit3"
+    let filename = "...Hiding-From-You"
+    let folder = "inhere"
+    
+    # Create the inhere directory
+    mkdir $folder
+    
+    # Create the hidden file
+    echo $password | save -f ($folder | path join $filename)
+    
+    echo $"Created hidden file $filename in $folder with password: $password"
+    
+    { success: true, message: $"Level 3 setup complete" }
 }

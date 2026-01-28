@@ -1,15 +1,16 @@
-# Level 1 Check
-# Read password from readme file and validate against input
-export def check-password [input: string] {
-    use lib/check.nu
+# Check script for level 1
+# Validate that player found the password in file "-"
 
+export def "main check" [expected_password: string] -> record {
     try {
-        let password = open (path expand ~)/bandit1/readme | str trim
-        validate-password $input $password
-    } catch {
-        {
-            success: false,
-            message: "Error reading password file: readme not found in /home/bandit1/"
+        # Use `open -` to read file named "-"
+        let actual_password = open "-"
+        if $expected_password == $actual_password {
+            return { success: true, message: "Password is correct!" }
+        } else {
+            return { success: false, message: "Password is incorrect. Try again." }
         }
+    } catch {
+        return { success: false, message: "Could not read file '-' or file not found" }
     }
 }
