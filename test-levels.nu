@@ -52,5 +52,41 @@ if $result3.success {
     print $"✗ Level 3 FAIL: ($result3.message)"
 }
 
+# Test level 4
+print "Testing level 4..."
+use levels/04/setup.nu
+setup main setup | ignore
+use levels/04/check.nu
+let result4 = (check main check "bandit5")
+if $result4.success {
+    print "✓ Level 4 PASS"
+} else {
+    print $"✗ Level 4 FAIL: ($result4.message)"
+}
+
+# Test level 5
+print "Testing level 5..."
+use levels/05/setup.nu
+setup main setup | ignore
+use levels/05/check.nu
+let result5 = (check main check "bandit6")
+if $result5.success {
+    print "✓ Level 5 PASS"
+} else {
+    print $"✗ Level 5 FAIL: ($result5.message)"
+}
+
+# Test level 6
+print "Testing level 6..."
+use levels/06/setup.nu
+setup main setup | ignore
+use levels/06/check.nu
+let result6 = (check main check "bandit7")
+if $result6.success {
+    print "✓ Level 6 PASS"
+} else {
+    print $"✗ Level 6 FAIL: ($result6.message)"
+}
+
 print ""
 print "All tests complete!"

@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "sessionId": "9c5f09e4-1f11-47da-9c3a-b1b182b661a9",
+  "sessionId": "b86bccdd-3610-4c26-aa88-b18d1eb36e10",
   "status": "running",
-  "startedAt": "2026-01-28T19:15:32.185Z",
-  "updatedAt": "2026-01-28T19:31:47.312Z",
-  "currentIteration": 1,
+  "startedAt": "2026-01-28T20:31:58.853Z",
+  "updatedAt": "2026-01-28T20:39:52.130Z",
+  "currentIteration": 0,
   "maxIterations": 0,
-  "tasksCompleted": 1,
+  "tasksCompleted": 0,
   "isPaused": false,
   "agentPlugin": "opencode",
   "trackerState": {
@@ -17,14 +17,14 @@
       {
         "id": "bandit-wargame-jvj.2",
         "title": "US-002: Create level directory structure and shared libraries",
-        "status": "open",
+        "status": "completed",
         "completedInSession": false
       },
       {
         "id": "bandit-wargame-jvj.1",
         "title": "US-001: Create Nix flake with shell and Docker outputs",
         "status": "completed",
-        "completedInSession": true
+        "completedInSession": false
       },
       {
         "id": "bandit-wargame-jvj.13",
@@ -89,7 +89,7 @@
       {
         "id": "bandit-wargame-jvj.3",
         "title": "US-003: Implement levels 0-3 (Basic file operations)",
-        "status": "open",
+        "status": "completed",
         "completedInSession": false
       },
       {
@@ -100,18 +100,7 @@
       }
     ]
   },
-  "iterations": [
-    {
-      "iteration": 1,
-      "status": "completed",
-      "taskId": "bandit-wargame-jvj.1",
-      "taskTitle": "US-001: Create Nix flake with shell and Docker outputs",
-      "taskCompleted": true,
-      "durationMs": 571340,
-      "startedAt": "2026-01-28T19:15:43.094Z",
-      "endedAt": "2026-01-28T19:25:14.434Z"
-    }
-  ],
+  "iterations": [],
   "skippedTaskIds": [],
   "cwd": "/home/andre/Documents/scratch/bandit-wargame",
   "activeTaskIds": [],
