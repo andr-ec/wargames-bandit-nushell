@@ -31,7 +31,7 @@
             echo "Run 'nushell' to start the game"
             echo "Level goals are in levels/00/goal.txt"
           '';
-        };
+
 
         packages.default = pkgs.stdenv.mkDerivation {
           pname = "bandit-nushell";
@@ -54,7 +54,7 @@
           '';
 
           dontFixup = true;
-        };
+
 
         packages.docker = pkgs.dockerTools.buildImage {
           name = "bandit-nushell";
@@ -77,12 +77,10 @@
           runAsRoot = true;
           config = {
             Cmd = ["/bin/bash"];
-            ExposedPorts = {"2222/tcp" = {}};
-            Env = [
-              "BANDIT_PORT=2222"
-            ];
-          };
-        };
+            ExposedPorts = { "2222/tcp" = {}; };
+            Env = [ "BANDIT_PORT=2222" ];
+  
+
 
         checks = {
           test-levels = pkgs.writeShellScriptBin "test-levels" ''
@@ -90,19 +88,23 @@
             nushell --test
             echo "Tests complete"
           '';
-        };
+
 
         apps = {
+          default = flake-utils.lib.mkApp {
+            drv = pkgs.writeShellScriptBin "play-bandit" ''
+              nushell
+            '';
+  
+
           test-levels = flake-utils.lib.mkApp {
             drv = pkgs.writeShellScriptBin "test-levels" ''
               echo "Running all level tests..."
               nushell --test
               echo "Test complete"
             '';
-          };
-        };
+  
 
-        apps.default = flake-utils.lib.mkApp {
-          drv = pkgs.writeShellScriptBin "play-bandit" ''
-            nushell
-     
+      }
+    );
+}
