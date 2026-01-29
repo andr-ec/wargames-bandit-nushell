@@ -6,21 +6,16 @@ level: 13
 
 ## Level Goal
 
-The password for the next level is stored in the file **data.txt**,
-which is a hexdump of a file that has been repeatedly compressed.
-For this level it may be useful to create a directory under /tmp in
-which you can work. Use mkdir with a hard to guess directory name.
-Or better, use the command "mktemp -d".
-Then copy the datafile using cp, and rename it using mv (read the
-manpages!)
+The password for the next level is stored in the file **sshkey.private**,
+which is an SSH private key. Use this key to SSH into bandit14@localhost
+and retrieve the next password from /etc/bandit_pass/bandit14.
 
 ## Commands you may need to solve this level
 
-grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd, mkdir,
-cp, mv, file
+ssh, cat, chmod
 
 ## Helpful Reading Material
 
-- [Hex dump on Wikipedia][]
+- [SSH/OpenSSH/Keys][]
 
-[Hex dump on Wikipedia]: https://en.wikipedia.org/wiki/Hex_dump
+[SSH/OpenSSH/Keys]: https://help.ubuntu.com/community/SSH/OpenSSH/Keys
