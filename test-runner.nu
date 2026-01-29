@@ -36,8 +36,14 @@ for level_dir in $level_dirs {
     }
     
     # Run the check with the expected password
-    # For basic levels, the password is "banditX" where X is the level number
-    let expected_password = $"bandit($level_num)"
+    let expected_password = match $level_num {
+        "27" => "4cRGHaL3sZmxBaVyFqHgOh6dpzDvjq6n"
+        "28" => "56a9d190189b0a7debe49dab5fee5c2e"
+        "29" => "ba4e105caeed5e19e973425fe1b0015b"
+        "30" => "jN2kgmIDVu4r94XL3CxCoVQa2BFTtDFY"
+        "31" => "jN2kgmIDVu4r94XL3CxCoVQa2BFTtDFY"
+        _ => $"bandit($level_num)"
+    }
     
     try {
         let result = (nu -c $"use ($check_file); use lib/check.nu; main check ($expected_password)" | from json)
