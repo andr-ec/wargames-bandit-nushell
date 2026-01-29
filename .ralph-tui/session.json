@@ -3,10 +3,10 @@
   "sessionId": "ef5bdfff-b27a-4557-a201-27456d962f56",
   "status": "running",
   "startedAt": "2026-01-29T18:32:14.330Z",
-  "updatedAt": "2026-01-29T20:28:02.458Z",
-  "currentIteration": 2,
+  "updatedAt": "2026-01-29T21:26:21.298Z",
+  "currentIteration": 3,
   "maxIterations": 0,
-  "tasksCompleted": 2,
+  "tasksCompleted": 3,
   "isPaused": false,
   "agentPlugin": "opencode",
   "trackerState": {
@@ -59,8 +59,8 @@
       {
         "id": "bandit-wargame-jvj.8",
         "title": "US-008: Implement levels 17-20 (Diff and privilege escalation)",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "bandit-wargame-jvj.7",
@@ -120,6 +120,16 @@
       "durationMs": 1224887,
       "startedAt": "2026-01-29T18:55:29.355Z",
       "endedAt": "2026-01-29T19:15:54.242Z"
+    },
+    {
+      "iteration": 3,
+      "status": "completed",
+      "taskId": "bandit-wargame-jvj.8",
+      "taskTitle": "US-008: Implement levels 17-20 (Diff and privilege escalation)",
+      "taskCompleted": true,
+      "durationMs": 4326551,
+      "startedAt": "2026-01-29T19:15:55.726Z",
+      "endedAt": "2026-01-29T20:28:02.277Z"
     }
   ],
   "skippedTaskIds": [],

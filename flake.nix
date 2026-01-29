@@ -80,6 +80,12 @@
               exec ${nushell}/bin/nushell test-runner.nu
             '';
           };
+
+          test-levels-21-24 = flake-utils.lib.mkApp {
+            drv = pkgs.writeShellScriptBin "test-levels-21-24" ''
+              exec ${nushell}/bin/nushell test-levels-21-24.nu
+            '';
+          };
         };
       }
     );
