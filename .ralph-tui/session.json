@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "sessionId": "b86bccdd-3610-4c26-aa88-b18d1eb36e10",
+  "sessionId": "ef5bdfff-b27a-4557-a201-27456d962f56",
   "status": "running",
-  "startedAt": "2026-01-28T20:31:58.853Z",
-  "updatedAt": "2026-01-28T21:04:13.649Z",
-  "currentIteration": 1,
+  "startedAt": "2026-01-29T18:32:14.330Z",
+  "updatedAt": "2026-01-29T18:55:28.029Z",
+  "currentIteration": 0,
   "maxIterations": 0,
-  "tasksCompleted": 1,
+  "tasksCompleted": 0,
   "isPaused": false,
   "agentPlugin": "opencode",
   "trackerState": {
@@ -71,20 +71,20 @@
       {
         "id": "bandit-wargame-jvj.6",
         "title": "US-006: Implement levels 10-12 (Encoding and compression)",
-        "status": "open",
+        "status": "in_progress",
         "completedInSession": false
       },
       {
         "id": "bandit-wargame-jvj.5",
         "title": "US-005: Implement levels 7-9 (Text search and processing)",
-        "status": "open",
+        "status": "completed",
         "completedInSession": false
       },
       {
         "id": "bandit-wargame-jvj.4",
         "title": "US-004: Implement levels 4-6 (File finding with filters)",
         "status": "completed",
-        "completedInSession": true
+        "completedInSession": false
       },
       {
         "id": "bandit-wargame-jvj.3",
@@ -100,18 +100,7 @@
       }
     ]
   },
-  "iterations": [
-    {
-      "iteration": 1,
-      "status": "completed",
-      "taskId": "bandit-wargame-jvj.4",
-      "taskTitle": "US-004: Implement levels 4-6 (File finding with filters)",
-      "taskCompleted": true,
-      "durationMs": 469876,
-      "startedAt": "2026-01-28T20:32:02.077Z",
-      "endedAt": "2026-01-28T20:39:51.953Z"
-    }
-  ],
+  "iterations": [],
   "skippedTaskIds": [],
   "cwd": "/home/andre/Documents/scratch/bandit-wargame",
   "activeTaskIds": [],

@@ -124,5 +124,41 @@ if $result9.success {
     print $"✗ Level 9 FAIL: ($result9.message)"
 }
 
+# Test level 10
+print "Testing level 10..."
+use levels/10/setup.nu
+setup main setup | ignore
+use levels/10/check.nu
+let result10 = (check main check "67sYOyDZiFTve0q0sCu5Tuq82A3BssJ2")
+if $result10.success {
+    print "✓ Level 10 PASS"
+} else {
+    print $"✗ Level 10 FAIL: ($result10.message)"
+}
+
+# Test level 11
+print "Testing level 11..."
+use levels/11/setup.nu
+setup main setup | ignore
+use levels/11/check.nu
+let result11 = (check main check "1Qq2WYhvASnzSrU4KSfxYbhpqgC79pwP")
+if $result11.success {
+    print "✓ Level 11 PASS"
+} else {
+    print $"✗ Level 11 FAIL: ($result11.message)"
+}
+
+# Test level 12
+print "Testing level 12..."
+use levels/12/setup.nu
+setup main setup | ignore
+use levels/12/check.nu
+let result12 = (check main check "36q9ajm7RcKJMOvIa6uncG104kNkCBCG")
+if $result12.success {
+    print "✓ Level 12 PASS"
+} else {
+    print $"✗ Level 12 FAIL: ($result12.message)"
+}
+
 print ""
 print "All tests complete!"

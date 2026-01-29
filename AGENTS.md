@@ -27,7 +27,7 @@ ALWAYS UPDATE AGENTS.md AND LEARNINGS.md!!!!
 When you learn something important while working on this project, update this section with a concise one-liner and add details to `docs/LEARNINGS.md`.
 
 <!-- Add learnings here as: - [Topic]: Brief insight (see docs/LEARNINGS.md#topic) -->
-
+- Nushell is available via the `nu` command
 - [Nushell module system]: When calling functions from imported modules with subcommands (e.g., `main setup`), you must use module prefix like `setup main setup` not just `main setup`
 - [path exists]: Nushell's `path exists` command takes piped input, not positional arguments - use `$file | path exists` instead of `path exists $file`
 - [mkdir]: Nushell's `mkdir` automatically creates parent directories, no `-p` flag needed
