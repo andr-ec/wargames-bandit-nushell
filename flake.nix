@@ -66,6 +66,16 @@
             EOF
             chmod +x $out/bin/test-levels
           '';
+
+          test-levels-25-26 = pkgs.runCommand "test-levels-25-26" { buildInputs = [ nushell ]; } ''
+            mkdir -p $out/bin
+            cat > $out/bin/test-levels-25-26 <<EOF
+            #!/bin/sh
+            echo "Running level 25-26 tests..."
+            ${nushell}/bin/nushell test-levels-25-26.nu
+            EOF
+            chmod +x $out/bin/test-levels-25-26
+          '';
         };
 
         apps = {
@@ -84,6 +94,12 @@
           test-levels-21-24 = flake-utils.lib.mkApp {
             drv = pkgs.writeShellScriptBin "test-levels-21-24" ''
               exec ${nushell}/bin/nushell test-levels-21-24.nu
+            '';
+          };
+
+          test-levels-25-26 = flake-utils.lib.mkApp {
+            drv = pkgs.writeShellScriptBin "test-levels-25-26" ''
+              exec ${nushell}/bin/nushell test-levels-25-26.nu
             '';
           };
         };
