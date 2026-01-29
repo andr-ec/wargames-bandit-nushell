@@ -3,10 +3,10 @@
   "sessionId": "ef5bdfff-b27a-4557-a201-27456d962f56",
   "status": "running",
   "startedAt": "2026-01-29T18:32:14.330Z",
-  "updatedAt": "2026-01-29T19:15:54.405Z",
-  "currentIteration": 1,
+  "updatedAt": "2026-01-29T20:28:02.458Z",
+  "currentIteration": 2,
   "maxIterations": 0,
-  "tasksCompleted": 1,
+  "tasksCompleted": 2,
   "isPaused": false,
   "agentPlugin": "opencode",
   "trackerState": {
@@ -65,8 +65,8 @@
       {
         "id": "bandit-wargame-jvj.7",
         "title": "US-007: Implement levels 13-16 (SSH and networking)",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "bandit-wargame-jvj.6",
@@ -110,6 +110,16 @@
       "durationMs": 1388575,
       "startedAt": "2026-01-29T18:32:19.299Z",
       "endedAt": "2026-01-29T18:55:27.874Z"
+    },
+    {
+      "iteration": 2,
+      "status": "completed",
+      "taskId": "bandit-wargame-jvj.7",
+      "taskTitle": "US-007: Implement levels 13-16 (SSH and networking)",
+      "taskCompleted": true,
+      "durationMs": 1224887,
+      "startedAt": "2026-01-29T18:55:29.355Z",
+      "endedAt": "2026-01-29T19:15:54.242Z"
     }
   ],
   "skippedTaskIds": [],
