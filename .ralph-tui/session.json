@@ -3,10 +3,10 @@
   "sessionId": "ef5bdfff-b27a-4557-a201-27456d962f56",
   "status": "running",
   "startedAt": "2026-01-29T18:32:14.330Z",
-  "updatedAt": "2026-01-30T01:43:58.892Z",
-  "currentIteration": 7,
+  "updatedAt": "2026-01-30T01:57:55.538Z",
+  "currentIteration": 8,
   "maxIterations": 0,
-  "tasksCompleted": 7,
+  "tasksCompleted": 8,
   "isPaused": false,
   "agentPlugin": "opencode",
   "trackerState": {
@@ -29,8 +29,8 @@
       {
         "id": "bandit-wargame-jvj.13",
         "title": "US-013: Create test harness for level verification",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "bandit-wargame-jvj.12",
@@ -170,10 +170,20 @@
       "durationMs": 3098149,
       "startedAt": "2026-01-29T23:31:40.931Z",
       "endedAt": "2026-01-30T00:23:19.080Z"
+    },
+    {
+      "iteration": 8,
+      "status": "completed",
+      "taskId": "bandit-wargame-jvj.13",
+      "taskTitle": "US-013: Create test harness for level verification",
+      "taskCompleted": true,
+      "durationMs": 4838153,
+      "startedAt": "2026-01-30T00:23:20.573Z",
+      "endedAt": "2026-01-30T01:43:58.726Z"
     }
   ],
   "skippedTaskIds": [],
   "cwd": "/home/andre/Documents/scratch/bandit-wargame",
   "activeTaskIds": [],
-  "subagentPanelVisible": false
+  "subagentPanelVisible": true
 }
