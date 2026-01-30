@@ -53,3 +53,30 @@ Levels are organized by difficulty and topic:
 - 28-34: Git manipulation (branches, tags, history)
 - 35-39: Advanced topics (environment variables, system files)
 
+### How to Approach Each Level
+
+**For every level:**
+1. Read `goal.txt` carefully - it contains the instructions
+2. Check `setup.nu` to understand the environment created
+3. Explore the current directory with `ls -la`
+4. Look for hidden files and special permissions
+5. Use appropriate commands to find the solution
+6. Run `nu -c "./check.nu"` to validate your password
+
+**General Tips:**
+- Check `ls -la` to see all files including hidden ones (starting with `.`)
+- Use `find .` to search for files by name, type, or permissions
+- Read files with `cat`, `less`, or `more`
+- Change permissions with `chmod`
+- Run check script with `nu -c "./check.nu"`
+- Advanced levels 31-39 have dedicated `test.nu` files
+
+### Progression Guide
+
+**Beginner (Levels 0-10):** Learn basic file navigation and manipulation
+**Intermediate (Levels 11-20):** Learn text processing, system tools, and networking
+**Advanced (Levels 21-30):** Learn cryptography, shell scripting, and file systems
+**Expert (Levels 31-39):** Complex multi-step problems and binary analysis
+
+See [Player Guide](../docs/PLAYER_GUIDE.md) for detailed instructions.
+

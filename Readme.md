@@ -71,6 +71,25 @@ Enjoy !
 - Add a level related to NFS
 
 
+## Player Documentation
+
+### Getting Started
+
+- **[Quick Start Guide](docs/QUICKSTART.md)** - Get playing in under 5 minutes
+- **[Player Guide](docs/PLAYER_GUIDE.md)** - Complete handbook for playing the game
+- **[Command Reference](docs/COMMAND_REFERENCE.md)** - All commands you'll need
+
+### Level Information
+
+- **[Level Structure](levels/README.md)** - Overview of level organization and progression
+
+### Additional Resources
+
+- **[Notes Template](docs/NOTES.md)** - Format for tracking your progress
+- **[Troubleshooting](docs/TROUBLESHOOTING.md)** - Common issues and solutions
+- **[Original Bandit](https://overthewire.org/wargames/bandit/)** - Official game website
+- **[bandit/<level>.md](bandit/)** - Original level descriptions
+
 ### Contributors
 Thanks to [https://github.com/kylir](Kylir) for writing the initial Dockerfile
 
