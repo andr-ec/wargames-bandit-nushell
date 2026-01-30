@@ -42,23 +42,29 @@ for level_dir in $level_dirs {
         "29" => "ba4e105caeed5e19e973425fe1b0015b"
         "30" => "jN2kgmIDVu4r94XL3CxCoVQa2BFTtDFY"
         "31" => "jN2kgmIDVu4r94XL3CxCoVQa2BFTtDFY"
+        "32" => "GYokrn9Vb14NmhzO9BKjuV6OkwS4jGp8"
+        "33" => "yD1jt6XZ12n4ZFGk7tXhS4Q14PveE4G8"
+        "34" => "IfOzZF1tsMUZ1MUDmgNCykuY7UhGWw5T"
+        "35" => "D4s3J6b2S3JbD4pD.9r8Z4eVj2C4v8q"
+        "36" => "daV8r54i3Lf4z42SJvvuVvzxSTB6APIn"
+        "37" => "ALBUBUiqYsZd3tYGCAwVZNnR6cNkIgUh"
+        "38" => "4cwYehD9pQsWt9O6YUBaXUojUaYEfeZr"
+        "39" => "4cwYehD9pQsWt9O6YUBaXUojUaYEfeZr"
         _ => $"bandit($level_num)"
     }
     
-    try {
-        let result = (nu -c $"use ($check_file); use lib/check.nu; main check ($expected_password)" | from json)
-        
-        if $result.success {
-            print $"✓ PASS"
-            $passed += 1
-        } else {
-            print $"✗ FAIL: ($result.message)"
-            $failed += 1
-            $failed_levels = ($failed_levels | append $level_num)
-        }
+    let result = try {
+        nu -c $"use ($check_file); use lib/check.nu; main check ($expected_password)" | from json
     } catch {
-        print $"✗ FAIL: Error running check"
-        $failed += 1
+        { success: false, message: $"Error running check: ($in.error.message)" }
+    }
+    
+    if $result.success {
+        print $"✓ PASS"
+        $passed = ($passed + 1)
+    } else {
+        print $"✗ FAIL: ($result.message)"
+        $failed = ($failed + 1)
         $failed_levels = ($failed_levels | append $level_num)
     }
 }

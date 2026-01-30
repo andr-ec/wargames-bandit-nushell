@@ -1,1 +1,4 @@
-This is the goal for level 39: Thanks for playing! You've completed all levels.
+Level Goal: (End of game - congratulations!)
+
+Commands you may need to solve this level
+(No commands needed)

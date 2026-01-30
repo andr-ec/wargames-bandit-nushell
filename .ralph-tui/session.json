@@ -3,10 +3,10 @@
   "sessionId": "ef5bdfff-b27a-4557-a201-27456d962f56",
   "status": "running",
   "startedAt": "2026-01-29T18:32:14.330Z",
-  "updatedAt": "2026-01-29T23:31:39.573Z",
-  "currentIteration": 5,
+  "updatedAt": "2026-01-30T00:23:19.238Z",
+  "currentIteration": 6,
   "maxIterations": 0,
-  "tasksCompleted": 5,
+  "tasksCompleted": 6,
   "isPaused": false,
   "agentPlugin": "opencode",
   "trackerState": {
@@ -41,8 +41,8 @@
       {
         "id": "bandit-wargame-jvj.11",
         "title": "US-011: Implement levels 27-31 (Git challenges)",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "bandit-wargame-jvj.10",
@@ -150,6 +150,16 @@
       "durationMs": 5829760,
       "startedAt": "2026-01-29T21:26:22.682Z",
       "endedAt": "2026-01-29T23:03:32.442Z"
+    },
+    {
+      "iteration": 6,
+      "status": "completed",
+      "taskId": "bandit-wargame-jvj.11",
+      "taskTitle": "US-011: Implement levels 27-31 (Git challenges)",
+      "taskCompleted": true,
+      "durationMs": 1685420,
+      "startedAt": "2026-01-29T23:03:33.986Z",
+      "endedAt": "2026-01-29T23:31:39.406Z"
     }
   ],
   "skippedTaskIds": [],

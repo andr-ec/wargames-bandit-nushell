@@ -1,1 +1,4 @@
-This is the goal for level 37: Use the SUID cp binary to copy the password file.
+Level Goal: Find a way to read the file, execute the file, or compromise the system.
+
+Commands you may need to solve this level
+cp
