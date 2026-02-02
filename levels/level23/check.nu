@@ -2,7 +2,7 @@
 # Level 23 validation
 # Test that cron job and script launcher are properly configured
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     # Check cron job file exists
     let cron_file = "/etc/cron.d/cronjob_bandit24"
     if not ($cron_file | path exists) {

@@ -1,7 +1,7 @@
 # Level 18 validation
 # Test that readme exists and .bashrc has logout commands
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         let current_password = (open readme | str trim)
         let password_check = check main check $expected_password $current_password

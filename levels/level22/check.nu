@@ -2,7 +2,7 @@
 # Level 22 validation
 # Test that cron job and MD5-based password storage are properly configured
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     # Check cron job file exists
     let cron_file = "/etc/cron.d/cronjob_bandit23"
     if not ($cron_file | path exists) {

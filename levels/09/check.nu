@@ -1,7 +1,7 @@
 # Level 09 validation
 # Find human-readable string preceded by several '=' in binary data
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     if not ("data.txt" | path exists) {
         return { success: false, message: "data.txt not found" }
     }

@@ -2,7 +2,7 @@
 # Level 32 validation
 # Test that bandit32 user, password file, and proper permissions are set
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         # Check bandit_pass directory exists
         let bandit_pass_path = "/home/bandit32/bandit_pass"

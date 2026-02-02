@@ -1,7 +1,7 @@
 # Check script for level 2
 # Validate that player found the password in file with spaces
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         let actual_password = open "spaces in this filename"
         check main check "bandit2" $actual_password

@@ -1,7 +1,7 @@
 # Level 26 validation
 # Test that bandit26 password file exists and has correct content
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         # Check bandit_pass directory exists
         let bandit_pass_path = "/home/andre/Documents/scratch/bandit-wargame/bandit_pass"

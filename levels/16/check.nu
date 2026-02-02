@@ -1,7 +1,7 @@
 # Level 16 validation
 # Test that SSL certificate was generated
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         if not (path exists script15.pem) {
             return { success: false, message: "SSL certificate (script15.pem) not found" }

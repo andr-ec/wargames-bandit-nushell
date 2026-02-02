@@ -2,7 +2,7 @@
 # Level 39 validation
 # Test that bandit39 has correct password file
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         # Check bandit_pass directory exists
         let bandit_pass_path = "/home/bandit39/bandit_pass"

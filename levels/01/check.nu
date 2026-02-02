@@ -1,7 +1,7 @@
 # Check script for level 1
 # Validate that player found the password in file "-"
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         let actual_password = open "-"
         check main check "bandit1" $actual_password

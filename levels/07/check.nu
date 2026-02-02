@@ -1,7 +1,7 @@
 # Level 7 validation
 # Find password next to word "millionth" in data.txt
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         if not (data.txt | path exists) {
             return { success: false, message: "data.txt not found" }

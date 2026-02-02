@@ -2,7 +2,7 @@
 # Find file with specific ownership: bandit7 owner, bandit6 group, 33 bytes
 # Reference: install.sh lines 233-238
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     # Try system path first (Docker), fallback to local for testing
     let target_file = if ("/var/lib/dpkg/info/bandit7.password" | path exists) {
         "/var/lib/dpkg/info/bandit7.password"

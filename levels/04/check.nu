@@ -2,7 +2,7 @@
 # Find the only human-readable file in inhere directory
 # Reference: install.sh lines 163-185
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     let folder = "inhere"
 
     if not ($folder | path exists) {

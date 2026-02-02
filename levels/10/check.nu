@@ -1,7 +1,7 @@
 # Level 10 validation
 # Decode base64 and find password in human-readable string
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         if not (data.txt | path exists) {
             return { success: false, message: "data.txt not found" }

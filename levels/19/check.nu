@@ -1,7 +1,7 @@
 # Level 19 validation
 # Test that setuid binary exists with correct permissions
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         # Check binary exists
         if not ((path exists bandit20-do)) {

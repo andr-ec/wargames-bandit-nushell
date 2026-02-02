@@ -1,7 +1,7 @@
 # Level 14 validation
 # Test reading password file
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         # Read the password file directly
         let content = open "/etc/bandit_pass/bandit14"

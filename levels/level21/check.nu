@@ -2,7 +2,7 @@
 # Level 21 validation
 # Test that cron job and temporary file mechanism are properly configured
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     # Check cron job file exists
     let cron_file = "/etc/cron.d/cronjob_bandit22"
     if not ($cron_file | path exists) {

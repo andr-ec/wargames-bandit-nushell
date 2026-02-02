@@ -1,7 +1,7 @@
 # Check script for level 3
 # Validate that player found the password in hidden file
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         # Find the hidden file in inhere/ directory
         # Look for files starting with "..."

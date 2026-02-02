@@ -1,7 +1,7 @@
 # Level 12 validation
 # Decompress hexdump to extract password
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         if not (data.txt | path exists) {
             return { success: false, message: "data.txt not found" }

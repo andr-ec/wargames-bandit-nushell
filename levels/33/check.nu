@@ -2,7 +2,7 @@
 # Level 33 validation
 # Test that bandit33 has correct .profile with environment variable
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         # Check .profile exists
         let profile_path = "/home/bandit33/.profile"

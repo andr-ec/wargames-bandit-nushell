@@ -1,7 +1,7 @@
 # Level 17 validation
 # Test that passwords.old and passwords.new exist with one line changed
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         # Check passwords.old exists and has content
         if not (passwords.old)| path exists {

@@ -2,7 +2,7 @@
 # Find file with specific properties: human-readable, 1033 bytes, not executable
 # Reference: install.sh lines 188-230
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     let folder = "inhere"
 
     if not ($folder | path exists) {

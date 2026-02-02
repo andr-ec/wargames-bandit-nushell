@@ -38,6 +38,8 @@ When you learn something important while working on this project, update this se
 - [File size units]: `ls | get size` returns filesize type like "1.0 KiB" - use `| into int` to get bytes as integer
 - [String padding]: Nushell lacks string multiplication - use `1..$n | each { ' ' } | str join` to create repeated characters
 - [External command output]: To pipe external command output to save, use `^cmd | save -f file` - shell redirects like `2>/dev/null` need bash wrapper
+- [Return type syntax]: Nushell 0.109+ changed return type syntax from `] -> record {` to `]: record {` - or just omit return types
+- [Version testing]: Always run tests with `nix develop -c nu` to use the correct Nushell version from the flake
 
 ## Landing the Plane (Session Completion)
 

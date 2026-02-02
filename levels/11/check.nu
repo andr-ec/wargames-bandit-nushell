@@ -1,7 +1,7 @@
 # Level 11 validation
 # Decode ROT13 to find password
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     if not ("data.txt" | path exists) {
         return { success: false, message: "data.txt not found" }
     }

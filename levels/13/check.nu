@@ -1,7 +1,7 @@
 # Level 13 validation
 # Test SSH key usage
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         if not (sshkey.private | path exists) {
             return { success: false, message: "sshkey.private not found" }

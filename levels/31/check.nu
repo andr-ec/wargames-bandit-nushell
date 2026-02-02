@@ -2,7 +2,7 @@
 # Level 31 validation
 # Test that bandit31-git bare repository and password file are properly configured
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         # Check bandit_pass directory exists
         let bandit_pass_path = "/home/andre/Documents/scratch/bandit-wargame/bandit_pass"

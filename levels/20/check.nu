@@ -1,7 +1,7 @@
 # Level 20 validation
 # Test that TCP connect binary exists with correct permissions
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         # Check binary exists
         if not (suconnect)| path exists {

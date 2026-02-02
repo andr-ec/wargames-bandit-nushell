@@ -1,7 +1,7 @@
 # Level 15 validation
 # Connect to TCP listener and get password
 
-export def "main check" [expected_password: string] -> record {
+export def "main check" [expected_password: string] {
     try {
         # Read the password file
         let password14 = open "/etc/bandit_pass/bandit14"
