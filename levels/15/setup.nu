@@ -1,19 +1,14 @@
 # Level 15 setup
 # Setup TCP listener on port 30000
+# NOTE: This level requires Docker environment with bandit_pass files
 
 export def "main setup" [] {
-    let password = "4wpMlaU4S7rYlDo79Ubu6x32QPz7dnt2"
+    # In Docker, the listener is started by starter.sh
+    # For local testing, we create a mock password file
+    let password = "bandit16"
 
-    # Copy the TCP listener script
-    cp ../scripts/14_listener_tcp.py script14.py
+    mkdir bandit_pass
+    $password | save -f bandit_pass/bandit16
 
-    # Run the listener in background
-    bash -c "python3 ../scripts/14_listener_tcp.py &"
-
-    # Wait a moment for listener to start
-    sleep 2
-
-    echo $"Created level 15 with password: $password"
-
-    { success: true, message: $"Level 15 setup complete" }
+    { success: true, message: "Level 15 setup complete (requires Docker for full functionality)" }
 }

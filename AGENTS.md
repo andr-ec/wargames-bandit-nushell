@@ -34,6 +34,10 @@ When you learn something important while working on this project, update this se
 - [Regex in where]: When using regex with `where` command on filenames, the `name` field includes full path prefix like `inhere/...`
 - [Group-by for counting]: Use `group-by` followed by `transpose` and `sort-by` to count occurrences of lines or elements
 - [Binary data handling]: When working with binary files, use `open` and `str find` with regex to extract human-readable strings
+- [No random bytes]: Nushell lacks `random bytes` - use `^bash -c "dd if=/dev/urandom bs=N count=1"` for binary data
+- [File size units]: `ls | get size` returns filesize type like "1.0 KiB" - use `| into int` to get bytes as integer
+- [String padding]: Nushell lacks string multiplication - use `1..$n | each { ' ' } | str join` to create repeated characters
+- [External command output]: To pipe external command output to save, use `^cmd | save -f file` - shell redirects like `2>/dev/null` need bash wrapper
 
 ## Landing the Plane (Session Completion)
 

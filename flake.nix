@@ -56,6 +56,48 @@
           dontFixup = true;
         };
 
+        packages.docker = pkgs.dockerTools.buildImage {
+          name = "bandit-nushell";
+          tag = "latest";
+
+          copyToRoot = pkgs.buildEnv {
+            name = "bandit-env";
+            paths = [
+              nushell
+              pkgs.coreutils
+              pkgs.bash
+              pkgs.openssh
+              pkgs.openssl
+              pkgs.netcat
+              pkgs.git
+              pkgs.python3
+              pkgs.gcc
+              pkgs.gnugrep
+              pkgs.findutils
+              pkgs.gnutar
+              pkgs.gzip
+              pkgs.bzip2
+              self.packages.${system}.default
+            ];
+            pathsToLink = [ "/bin" "/lib" "/share" ];
+          };
+
+          config = {
+            Cmd = [ "${nushell}/bin/nu" ];
+            WorkingDir = "/game";
+            Env = [
+              "PATH=/bin"
+              "HOME=/root"
+            ];
+          };
+
+          runAsRoot = ''
+            #!${pkgs.runtimeShell}
+            mkdir -p /game
+            cp -r ${self.packages.${system}.default}/* /game/
+          '';
+        };
+
         checks = {
           test-levels = pkgs.runCommand "test-levels" { buildInputs = [ nushell ]; } ''
             mkdir -p $out/bin

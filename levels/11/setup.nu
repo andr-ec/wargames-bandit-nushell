@@ -1,17 +1,16 @@
 # Level 11 setup
 # Create ROT13 encoded data with password
+# Reference: install.sh line 294
 
 export def "main setup" [] {
-    let password = "1Qq2WYhvASnzSrU4KSfxYbhpqgC79pwP"
+    let password = "bandit12"
 
-    # Apply ROT13 to password
-    let rot13 = $password | encode -r 13
+    # Apply ROT13 encoding using tr command
+    let content = $"The password is ($password)"
+    let encoded = ($content | ^tr 'a-mn-zA-MN-Z' 'n-za-mN-ZA-M')
 
-    echo $"The password is $password" | save -f data.txt
+    $encoded | save -f data.txt
+    ^chmod 640 data.txt
 
-    chmod 640 data.txt
-
-    echo $"Created level 11 with password: $password"
-
-    { success: true, message: $"Level 11 setup complete" }
+    { success: true, message: "Level 11 setup complete" }
 }

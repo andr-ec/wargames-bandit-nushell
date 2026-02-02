@@ -1,11 +1,17 @@
-#!/usr/bin/env nu
 # Level 26 setup
-# Change bandit26's shell to 'showtext' which is a restricted shell
+# This level requires the user to have escaped from the showtext restricted shell
+# The setup creates a SUID binary that allows reading the next password
+# Reference: install.sh lines 458-462
 
 export def "main setup" [] {
-    let bandit26_password = "42WbmEO4SR7mvSp1E1pRK91d5FVBQwYt"
+    let password = "bandit27"
 
-    echo $"Created level 26 with password: $bandit26_password"
+    # Create password file for local testing
+    mkdir bandit_pass
+    $password | save -f bandit_pass/bandit27
 
-    { success: true, message: $"Level 26 setup complete" }
+    # In Docker, the SUID binary bandit27-do is compiled from scripts/19_suid.c
+    # and installed at /home/bandit26/bandit27-do with permissions 4750
+
+    { success: true, message: "Level 26 setup complete" }
 }

@@ -9,14 +9,12 @@ level: 15
 The password for the next level can be retrieved by submitting the
 password of the current level to **port 30000 on localhost**.
 
-## Commands you may need to solve this level
+## Nushell commands you may need to solve this level
 
-open, nc, echo, timeout
+[open](https://www.nushell.sh/commands/docs/open.html)
+
+You can also use external commands like `nc` (netcat) to connect to TCP ports.
 
 ## Helpful Reading Material
 
-- [TCP/IP Basics][]
-- [Nushell Shell Operations][]
-
-[TCP/IP Basics]: https://en.wikipedia.org/wiki/Transmission_Control_Protocol
-[Nushell Shell Operations]: https://www.nushell.sh/book/operators.html
+- [TCP/IP Basics](https://en.wikipedia.org/wiki/Transmission_Control_Protocol)

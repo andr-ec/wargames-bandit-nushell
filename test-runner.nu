@@ -15,6 +15,10 @@ let test_levels = [
     { num: "02", expected: "bandit2", file: "levels/02/check.nu" },
     { num: "03", expected: "bandit3", file: "levels/03/check.nu" },
     { num: "04", expected: "bandit5", file: "levels/04/check.nu" },
+    { num: "05", expected: "bandit6", file: "levels/05/check.nu" },
+    { num: "06", expected: "bandit7", file: "levels/06/check.nu" },
+    { num: "09", expected: "bandit10", file: "levels/09/check.nu" },
+    { num: "11", expected: "bandit12", file: "levels/11/check.nu" },
 ]
 
 # Test each level

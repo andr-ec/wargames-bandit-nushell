@@ -5,16 +5,19 @@ level: 26
 ---
 Level Goal
 ----------
-Logging in to bandit26 from bandit25 should be fairly easy...
-The shell for user bandit26 is not **/bin/bash**, but something else.
-Find out what it is, how it works and how to break out of it.
+Good job getting a shell! Now hurry and grab the password for bandit27!
 
-> NOTE: if you're a Windows user and typically use Powershell to
-> `ssh` into bandit: Powershell is known to cause issues with the
-> intended solution to this level. You should use command prompt
-> instead.
+(The shell for user bandit26 is not **/bin/bash**, but something else.
+You already figured out how to break out of it.)
 
-Commands you may need to solve this level
------------------------------------------
-ssh, cat, more, vi, ls, id, pwd
+Nushell commands you may need to solve this level
+-------------------------------------------------
+[ls](https://www.nushell.sh/commands/docs/ls.html),
+[open](https://www.nushell.sh/commands/docs/open.html)
 
+You can also use external commands like `ssh`, `cat`, `more`, `vi`.
+
+NOTE: if you're a Windows user and typically use Powershell to
+ssh into bandit: Powershell is known to cause issues with the
+intended solution to this level. You should use command prompt
+instead.

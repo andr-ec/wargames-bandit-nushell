@@ -5,21 +5,18 @@ level: 5
 ---
 Level Goal
 ----------
-The password for the next level is stored in the only human-readable
-file in the **inhere** directory. Tip: if your terminal is messed
-up, try the "reset" command.
+The password for the next level is stored in a file somewhere under
+the **inhere** directory and has all of the following properties:
+- human-readable
+- 1033 bytes in size
+- not executable
 
-Commands you may need to solve this level
------------------------------------------
-[ls](https://manpages.ubuntu.com/manpages/noble/man1/ls.1.html)
-,
-[cd](https://manpages.ubuntu.com/manpages/noble/man1/cd.1posix.html)
-,
-[cat](https://manpages.ubuntu.com/manpages/noble/man1/cat.1.html)
-,
-[file](https://manpages.ubuntu.com/manpages/noble/man1/file.1.html)
-,
-[du](https://manpages.ubuntu.com/manpages/noble/man1/du.1.html)
-,
-[find](https://manpages.ubuntu.com/manpages/noble/man1/find.1.html)
+Nushell commands you may need to solve this level
+-------------------------------------------------
+[ls](https://www.nushell.sh/commands/docs/ls.html),
+[cd](https://www.nushell.sh/commands/docs/cd.html),
+[open](https://www.nushell.sh/commands/docs/open.html),
+[where](https://www.nushell.sh/commands/docs/where.html),
+[glob](https://www.nushell.sh/commands/docs/glob.html)
 
+You can also use external commands like `find` with `-size`, `-type`, and `-executable` flags.

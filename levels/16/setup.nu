@@ -1,13 +1,19 @@
 # Level 16 setup
-# Setup SSL listener on port 30001 and multiple listeners on 31000-32000
+# Setup SSL listener on port 30001
+# NOTE: This level requires Docker environment with SSL certificates
 
 export def "main setup" [] {
-    let password = "xjLTmQgKUDm9O95qWS2LJzwoVR01dITt"
+    # In Docker, the listener is started by starter.sh
+    # For local testing, we create a mock password file
+    let password = "bandit17"
 
-    # Generate SSL certificate using openssl
-    bash -c "openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout script15.key -out script15.pem -subj '/' 1>/dev/null 2>/dev/null"
+    mkdir bandit_pass
+    $password | save -f bandit_pass/bandit17
 
-    echo $"Created level 16 with password: $password"
+    # Generate SSL certificate for testing (if openssl available)
+    try {
+        ^openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout script15.key -out script15.pem -subj "/" 2>/dev/null
+    } catch { }
 
-    { success: true, message: $"Level 16 setup complete" }
+    { success: true, message: "Level 16 setup complete (requires Docker for full functionality)" }
 }
