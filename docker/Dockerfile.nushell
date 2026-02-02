@@ -1,0 +1,81 @@
+# Nushell Bandit Wargame - SSH Multi-User Docker Image
+FROM ubuntu:24.04
+
+# Set environment variables to make the installation non-interactive
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Update and install dependencies
+RUN apt-get update && \
+    apt-get install -y \
+        openssh-server \
+        python3 \
+        bzip2 \
+        cron \
+        xxd \
+        gcc \
+        git \
+        netcat-openbsd \
+        nmap \
+        openssl \
+        sudo \
+        file \
+        curl \
+        wget \
+    && apt-get clean
+
+# Install Nushell (using official releases)
+RUN curl -L https://github.com/nushell/nushell/releases/download/0.104.0/nu-0.104.0-x86_64-unknown-linux-gnu.tar.gz | \
+    tar xz -C /usr/local/bin --strip-components=1 nu-0.104.0-x86_64-unknown-linux-gnu/nu
+
+# Alias python to python3
+RUN ln -sf /usr/bin/python3 /usr/bin/python
+
+# Register nushell as a valid shell
+RUN echo "/usr/local/bin/nu" >> /etc/shells
+
+# Create SSH directory and configure SSH
+RUN mkdir -p /var/run/sshd && \
+    echo 'root:password' | chpasswd
+
+# Configure SSH for password authentication
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+    sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
+# SSH login fix - prevents user kickoff after login
+RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+
+# Expose SSH port
+EXPOSE 22
+
+# Create required directories
+RUN mkdir -p /etc/bandit_pass /etc/bandit_goal /etc/bandit_scripts /etc/bandit_skel
+
+# Clear legal notice
+RUN echo > /etc/legal
+
+# Disable update-motd scripts and restrict tmp permissions
+RUN chmod -x /etc/update-motd.d/* 2>/dev/null || true && \
+    chmod o-r /tmp
+
+# Copy game files (goal.txt and data needed for setup)
+COPY game /game
+
+# Copy scripts for Python listeners, C sources, etc.
+COPY docker/scripts /etc/bandit_scripts
+
+# Copy Nushell skeleton config
+COPY docker/nushell-skel /etc/bandit_skel/.config/nushell
+
+# Copy and run the install script
+COPY docker/install-nushell.sh /install.sh
+RUN chmod +x /install.sh && ./install.sh
+
+# Clean up
+RUN rm /install.sh
+
+# Copy starter script
+COPY docker/starter-nushell.sh /starter.sh
+RUN chmod 0700 /starter.sh
+
+# Start SSH service
+CMD ["/starter.sh"]

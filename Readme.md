@@ -15,11 +15,15 @@ bandit-wargame/
 │   ├── levels/          # Level definitions (00-39)
 │   ├── lib/             # Shared Nushell libraries
 │   └── data/            # Game data files
-├── docker/              # Docker infrastructure (bash version)
-│   ├── Dockerfile
-│   ├── install.sh
-│   ├── starter.sh
-│   └── scripts/         # Python/C for network levels
+├── docker/              # Docker infrastructure
+│   ├── Dockerfile           # Original bash version
+│   ├── Dockerfile.nushell   # Nushell SSH multi-user version
+│   ├── install.sh           # Bash version setup
+│   ├── install-nushell.sh   # Nushell version setup
+│   ├── starter.sh           # Bash version services
+│   ├── starter-nushell.sh   # Nushell version services
+│   ├── nushell-skel/        # Nushell config templates
+│   └── scripts/             # Python/C for network levels
 ├── docs/                # Player documentation
 ├── reference/           # Original OverTheWire docs
 │   └── bandit/
@@ -45,7 +49,63 @@ cd game/levels/00
 open goal.txt
 ```
 
-### Option 2: Run Original Bash Version via Nix
+### Option 2: Nushell SSH Version (Recommended)
+
+This provides the full wargame experience with SSH-based multi-user support, just like the original Bandit.
+
+```bash
+# Build and run the Nushell Bandit container
+nix run .#nushell-bandit
+
+# Connect via SSH
+ssh bandit0@localhost -p 2220
+# Password: bandit0
+```
+
+On login, you'll see:
+```
+══════════════════════════════════════════════════════════════════
+  Bandit Wargame - Nushell Edition
+══════════════════════════════════════════════════════════════════
+
+Level 0
+
+Goal:
+The password for the next level is stored in a file called **readme**
+located in the home directory.
+
+Useful commands for this level:
+  ls, cd, open
+
+bandit0:~> ls
+readme
+bandit0:~> open readme
+<password for bandit1>
+```
+
+Use the password you find to SSH as the next user (`bandit1`, `bandit2`, etc.).
+
+To stop the game:
+```bash
+docker stop bandit-nushell && docker rm bandit-nushell
+```
+
+### Option 2b: Simple Docker Nushell (Single-User)
+
+For a simpler single-user experience without SSH:
+
+```bash
+# Build and run the simple image
+nix build .#docker-simple
+docker load < result
+docker run -it bandit-nushell-simple:latest
+
+# You'll be dropped into a Nushell shell
+cd /game/levels/00
+open goal.txt
+```
+
+### Option 3: Run Original Bash Version via Nix
 
 ```bash
 # Build and run the original bash bandit with Docker
@@ -56,7 +116,7 @@ ssh bandit0@localhost -p 2220
 # Password: bandit0
 ```
 
-### Option 3: Docker (Traditional)
+### Option 4: Docker (Traditional)
 
 ```bash
 # Clone and build

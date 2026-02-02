@@ -56,8 +56,9 @@
           dontFixup = true;
         };
 
-        packages.docker = pkgs.dockerTools.buildImage {
-          name = "bandit-nushell";
+        # Simple single-user Docker image (direct shell, no auth)
+        packages.docker-simple = pkgs.dockerTools.buildImage {
+          name = "bandit-nushell-simple";
           tag = "latest";
 
           copyToRoot = pkgs.buildEnv {
@@ -97,6 +98,19 @@
             cp -r ${self.packages.${system}.default}/game/* /game/
           '';
         };
+
+        # SSH-based multi-user Docker image (main experience)
+        # This uses a traditional Dockerfile since it needs full Ubuntu with user management
+        packages.docker = pkgs.runCommand "bandit-nushell-docker" {
+          buildInputs = [ pkgs.docker ];
+          src = self;
+        } ''
+          mkdir -p $out
+          echo "To build the SSH-based Nushell Bandit image, run:" > $out/README
+          echo "  docker build -t bandit-nushell -f docker/Dockerfile.nushell docker/" >> $out/README
+          echo "" >> $out/README
+          echo "Or use: nix run .#nushell-bandit" >> $out/README
+        '';
 
         # Original bash version Docker image
         packages.docker-bash = pkgs.dockerTools.buildImage {
@@ -197,6 +211,41 @@
               echo "Password: bandit0"
               echo ""
               echo "To stop: docker stop bandit-bash && docker rm bandit-bash"
+            '';
+          };
+
+          # Run Nushell bandit via Docker (SSH-based multi-user)
+          nushell-bandit = flake-utils.lib.mkApp {
+            drv = pkgs.writeShellScriptBin "nushell-bandit" ''
+              echo "Building and running Nushell Bandit Wargame..."
+              if ! command -v docker &> /dev/null; then
+                echo "Error: Docker is required to run the Nushell version"
+                exit 1
+              fi
+
+              # Stop existing container if running
+              docker stop bandit-nushell 2>/dev/null || true
+              docker rm bandit-nushell 2>/dev/null || true
+
+              # Build using the Dockerfile.nushell (context is repo root)
+              docker build -t bandit-nushell -f ${self}/docker/Dockerfile.nushell ${self}
+
+              echo ""
+              echo "Starting Nushell Bandit container on port 2220..."
+              docker run -d --name bandit-nushell -p 2220:22 bandit-nushell:latest
+
+              echo ""
+              echo "══════════════════════════════════════════════════════════════════"
+              echo "  Bandit Wargame - Nushell Edition"
+              echo "══════════════════════════════════════════════════════════════════"
+              echo ""
+              echo "Connect with:"
+              echo "  ssh bandit0@localhost -p 2220"
+              echo "  Password: bandit0"
+              echo ""
+              echo "To stop the game:"
+              echo "  docker stop bandit-nushell && docker rm bandit-nushell"
+              echo ""
             '';
           };
         };
