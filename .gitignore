@@ -4,6 +4,7 @@
 # Generated test artifacts
 inhere/
 bandit_pass/
+bandit_scripts/
 data.txt
 data*.tar
 data*.bin
@@ -11,6 +12,11 @@ sshkey.private
 sshkey.private.pub
 script*.pem
 script*.key
+
+# Level test files created at root
+readme
+-
+spaces in this filename
 
 # Nix build artifacts
 result
@@ -28,6 +34,7 @@ Thumbs.db
 
 # Local config
 CLAUDE.md
+opencode.json
 .beads/bd.sock*
 .beads/daemon-error
 .ralph-tui/iterations/
