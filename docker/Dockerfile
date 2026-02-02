@@ -27,8 +27,8 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 # Expose port 22
 EXPOSE 22
 
-# Copy the "data" and "scripts" directories and the "install.sh" file to the container
-COPY data /data
+# Copy the "scripts" directory and the "install.sh" file to the container
+# Note: Build context should be the docker/ directory
 COPY scripts /scripts
 COPY install.sh /install.sh
 
@@ -40,7 +40,7 @@ RUN chmod -x /etc/update-motd.d/* && chmod o-r /tmp && chmod +x /install.sh
 RUN ./install.sh
 
 # Clean
-RUN rm -rf /data && rm -rf /scripts && rm /install.sh
+RUN rm -rf /scripts && rm /install.sh
 
 # Start the background scripts & SSH service
 COPY starter.sh starter.sh

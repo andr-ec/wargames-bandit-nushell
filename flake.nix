@@ -28,8 +28,8 @@
 
           shellHook = ''
             echo "Welcome to Bandit Wargame - Nushell Edition!"
-            echo "Run 'nushell' to start the game"
-            echo "Level goals are in levels/00/goal.txt"
+            echo "Run 'nu' to start the game"
+            echo "Level goals are in game/levels/00/goal.txt"
           '';
         };
 
@@ -40,12 +40,12 @@
 
           buildPhase = ''
             echo "Building Bandit Nushell game..."
-            mkdir -p $out/levels
-            mkdir -p $out/data
-            mkdir -p $out/lib
-            cp -r levels/* $out/levels/
-            cp data/* $out/data/
-            cp lib/* $out/lib/
+            mkdir -p $out/game/levels
+            mkdir -p $out/game/data
+            mkdir -p $out/game/lib
+            cp -r game/levels/* $out/game/levels/
+            cp -r game/data/* $out/game/data/
+            cp -r game/lib/* $out/game/lib/
             echo "Build complete"
           '';
 
@@ -94,7 +94,60 @@
           runAsRoot = ''
             #!${pkgs.runtimeShell}
             mkdir -p /game
-            cp -r ${self.packages.${system}.default}/* /game/
+            cp -r ${self.packages.${system}.default}/game/* /game/
+          '';
+        };
+
+        # Original bash version Docker image
+        packages.docker-bash = pkgs.dockerTools.buildImage {
+          name = "bandit-bash";
+          tag = "latest";
+          fromImage = pkgs.dockerTools.pullImage {
+            imageName = "ubuntu";
+            imageDigest = "sha256:b359f1067efa76f37863778f7b6d0e8d911e3ee8bbe4f1f5a7e4a1eb79d2aecd";
+            sha256 = "sha256-EfFJL99Dv2bEgNSFZl9ER01pL/MU91A9tjm8CbYDSz8=";
+            finalImageName = "ubuntu";
+            finalImageTag = "24.04";
+          };
+
+          copyToRoot = pkgs.buildEnv {
+            name = "bandit-bash-env";
+            paths = [
+              pkgs.coreutils
+              pkgs.bash
+              pkgs.openssh
+              pkgs.openssl
+              pkgs.netcat
+              pkgs.git
+              pkgs.python3
+              pkgs.gcc
+              pkgs.gnugrep
+              pkgs.findutils
+              pkgs.gnutar
+              pkgs.gzip
+              pkgs.bzip2
+              pkgs.xxd
+              pkgs.file
+            ];
+            pathsToLink = [ "/bin" "/lib" "/share" ];
+          };
+
+          config = {
+            Cmd = [ "${pkgs.bash}/bin/bash" ];
+            WorkingDir = "/";
+            Env = [
+              "PATH=/bin:/usr/bin"
+              "HOME=/root"
+            ];
+            ExposedPorts = { "22/tcp" = {}; };
+          };
+
+          runAsRoot = ''
+            #!${pkgs.runtimeShell}
+            mkdir -p /etc/bandit_pass /etc/bandit_goal /etc/bandit_scripts /etc/bandit_skel
+            cp -r ${self}/docker/scripts/* /etc/bandit_scripts/
+            cp ${self}/docker/install.sh /install.sh
+            chmod +x /install.sh
           '';
         };
 
@@ -104,44 +157,46 @@
             cat > $out/bin/test-levels <<EOF
             #!/bin/sh
             echo "Running level tests..."
-            ${nushell}/bin/nushell test-runner.nu
+            ${nushell}/bin/nu tests/test-runner.nu
             EOF
             chmod +x $out/bin/test-levels
-          '';
-
-          test-levels-25-26 = pkgs.runCommand "test-levels-25-26" { buildInputs = [ nushell ]; } ''
-            mkdir -p $out/bin
-            cat > $out/bin/test-levels-25-26 <<EOF
-            #!/bin/sh
-            echo "Running level 25-26 tests..."
-            ${nushell}/bin/nushell test-levels-25-26.nu
-            EOF
-            chmod +x $out/bin/test-levels-25-26
           '';
         };
 
         apps = {
           default = flake-utils.lib.mkApp {
             drv = pkgs.writeShellScriptBin "play-bandit" ''
-              exec ${nushell}/bin/nushell
+              exec ${nushell}/bin/nu
             '';
           };
 
-          test-levels = flake-utils.lib.mkApp {
-            drv = pkgs.writeShellScriptBin "test-levels" ''
-              exec ${nushell}/bin/nushell test-runner.nu
+          test = flake-utils.lib.mkApp {
+            drv = pkgs.writeShellScriptBin "test-bandit" ''
+              exec ${nushell}/bin/nu tests/test-runner.nu
             '';
           };
 
-          test-levels-21-24 = flake-utils.lib.mkApp {
-            drv = pkgs.writeShellScriptBin "test-levels-21-24" ''
-              exec ${nushell}/bin/nushell test-levels-21-24.nu
-            '';
-          };
+          # Run original bash bandit via Docker
+          bash-bandit = flake-utils.lib.mkApp {
+            drv = pkgs.writeShellScriptBin "bash-bandit" ''
+              echo "Building and running original bash bandit..."
+              if ! command -v docker &> /dev/null; then
+                echo "Error: Docker is required to run the bash version"
+                exit 1
+              fi
 
-          test-levels-25-26 = flake-utils.lib.mkApp {
-            drv = pkgs.writeShellScriptBin "test-levels-25-26" ''
-              exec ${nushell}/bin/nushell test-levels-25-26.nu
+              # Build using the Dockerfile
+              docker build -t bandit-bash -f ${self}/docker/Dockerfile ${self}/docker
+
+              echo ""
+              echo "Starting bandit container on port 2220..."
+              docker run -d --name bandit-bash -p 2220:22 bandit-bash:latest
+
+              echo ""
+              echo "Connect with: ssh bandit0@localhost -p 2220"
+              echo "Password: bandit0"
+              echo ""
+              echo "To stop: docker stop bandit-bash && docker rm bandit-bash"
             '';
           };
         };

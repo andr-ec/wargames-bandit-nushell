@@ -7,11 +7,29 @@ Bandit is great to test your Linux skills and has a nice security related touch.
 This version uses **Nushell** for all player interactions.
 
 
+## Project Structure
+
+```
+bandit-wargame/
+├── game/                 # Game source code
+│   ├── levels/          # Level definitions (00-39)
+│   ├── lib/             # Shared Nushell libraries
+│   └── data/            # Game data files
+├── docker/              # Docker infrastructure (bash version)
+│   ├── Dockerfile
+│   ├── install.sh
+│   ├── starter.sh
+│   └── scripts/         # Python/C for network levels
+├── docs/                # Player documentation
+├── reference/           # Original OverTheWire docs
+│   └── bandit/
+└── tests/               # Test infrastructure
+```
+
+
 ## Install Instructions
 
-You can run bandit@home with Nix (recommended), Docker, or manually.
-
-### Option 1: Nix (Recommended)
+### Option 1: Nix (Recommended for Nushell version)
 
 ```bash
 # Clone the repository
@@ -23,52 +41,43 @@ nix develop
 
 # Start playing (launches Nushell)
 nu
+cd game/levels/00
+open goal.txt
 ```
 
-### Option 2: Docker with Nix
+### Option 2: Run Original Bash Version via Nix
 
-Build the Docker image using Nix:
 ```bash
-nix build .#docker
-docker load < result
-docker run -it bandit-nushell:latest
+# Build and run the original bash bandit with Docker
+nix run .#bash-bandit
+
+# Then connect:
+ssh bandit0@localhost -p 2220
+# Password: bandit0
 ```
 
 ### Option 3: Docker (Traditional)
 
 ```bash
-# Clone the repository
+# Clone and build
 git clone https://github.com/20100dbg/bandit-wargame
+cd bandit-wargame/docker
+docker build -t bandit .
 
-# Build the container
-docker build . -t bandit
-
-# Start the container
+# Run container
 docker run -d --name bandit -p 2220:22 bandit:latest
 
-# Connect as user bandit0
+# Connect
 ssh bandit0@localhost -p 2220
 # Password: bandit0
 ```
 
-### Option 4: Manual Install
 
-> **Warning**: Install in a Virtual Machine, NOT in your daily environment.
+## How to Play (Nushell Version)
 
-```bash
-git clone https://github.com/20100dbg/bandit-wargame
-sudo apt install xxd git bzip2 gcc netcat-openbsd nmap nushell
-sudo ./install.sh
-sudo reboot
-ssh bandit0@127.0.0.1
-```
-
-
-## How to Play
-
-1. **Navigate to a level directory**: `cd levels/00`
-2. **Read the goal**: `open goal.txt` or use the `goal` alias
-3. **Solve the challenge**: Use Nushell and Linux commands
+1. **Navigate to a level directory**: `cd game/levels/00`
+2. **Read the goal**: `open goal.txt`
+3. **Solve the challenge**: Use Nushell commands
 4. **Check your answer**: `nu check.nu`
 5. **Advance to the next level**
 
@@ -78,37 +87,31 @@ Each level directory contains:
 - `check.nu` - Solution validation script
 
 
-## Player Documentation
+## Running Tests
 
-### Getting Started
+```bash
+# Using nix develop shell
+nix develop -c nu tests/test-runner.nu
+
+# Or inside the shell
+nu tests/test-runner.nu
+```
+
+
+## Player Documentation
 
 - **[Quick Start Guide](docs/QUICKSTART.md)** - Get playing in under 5 minutes
 - **[Player Guide](docs/PLAYER_GUIDE.md)** - Complete handbook for playing the game
 - **[Command Reference](docs/COMMAND_REFERENCE.md)** - All commands you'll need
+- **[Level Structure](game/levels/README.md)** - Overview of level organization
 
-### Level Information
 
-- **[Level Structure](levels/README.md)** - Overview of level organization and progression
-
-### Additional Resources
+## Additional Resources
 
 - **[Notes Template](docs/NOTES.md)** - Format for tracking your progress
 - **[Troubleshooting](docs/TROUBLESHOOTING.md)** - Common issues and solutions
 - **[Original Bandit](https://overthewire.org/wargames/bandit/)** - Official game website
-- **[bandit/<level>.md](bandit/)** - Original level descriptions
-
-
-## Development
-
-Run tests:
-```bash
-nu test-runner.nu
-```
-
-Build Docker image with Nix:
-```bash
-nix build .#docker
-```
+- **[Reference Docs](reference/bandit/)** - Original level descriptions
 
 
 ### Contributors

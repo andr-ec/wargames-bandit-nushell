@@ -10,15 +10,15 @@ mut failed_levels = []
 
 # Define test levels (simple hardcoded list for now)
 let test_levels = [
-    { num: "00", expected: "bandit0", file: "levels/00/check.nu" },
-    { num: "01", expected: "bandit1", file: "levels/01/check.nu" },
-    { num: "02", expected: "bandit2", file: "levels/02/check.nu" },
-    { num: "03", expected: "bandit3", file: "levels/03/check.nu" },
-    { num: "04", expected: "bandit5", file: "levels/04/check.nu" },
-    { num: "05", expected: "bandit6", file: "levels/05/check.nu" },
-    { num: "06", expected: "bandit7", file: "levels/06/check.nu" },
-    { num: "09", expected: "bandit10", file: "levels/09/check.nu" },
-    { num: "11", expected: "bandit12", file: "levels/11/check.nu" },
+    { num: "00", expected: "bandit0", file: "game/levels/00/check.nu" },
+    { num: "01", expected: "bandit1", file: "game/levels/01/check.nu" },
+    { num: "02", expected: "bandit2", file: "game/levels/02/check.nu" },
+    { num: "03", expected: "bandit3", file: "game/levels/03/check.nu" },
+    { num: "04", expected: "bandit5", file: "game/levels/04/check.nu" },
+    { num: "05", expected: "bandit6", file: "game/levels/05/check.nu" },
+    { num: "06", expected: "bandit7", file: "game/levels/06/check.nu" },
+    { num: "09", expected: "bandit10", file: "game/levels/09/check.nu" },
+    { num: "11", expected: "bandit12", file: "game/levels/11/check.nu" },
 ]
 
 # Test each level
@@ -30,8 +30,8 @@ for test_level in $test_levels {
     print -n $"Testing level ($level_num)... "
 
     # Setup the level
-    let setup_file = $"levels/($level_num)/setup.nu"
-    let setup_cmd = $"use ($setup_file); use lib/check.nu; setup main setup"
+    let setup_file = $"game/levels/($level_num)/setup.nu"
+    let setup_cmd = $"use ($setup_file); use game/lib/check.nu; setup main setup"
     try {
         nu -c $setup_cmd | ignore
     } catch {
@@ -40,7 +40,7 @@ for test_level in $test_levels {
     }
 
     # Build and run the check directly
-    let check_result_text = nu -c $"use lib/check.nu; use ($check_file); check main check ($expected_password)"
+    let check_result_text = nu -c $"use game/lib/check.nu; use ($check_file); check main check ($expected_password)"
     let success = $check_result_text | str contains "success"
     let message = $check_result_text | str trim
 
